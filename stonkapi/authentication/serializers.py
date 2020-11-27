@@ -15,9 +15,19 @@ class RegisterSerializer(serializers.ModelSerializer):
     def validate(self,attrs):
         email = attrs.get('email', '')
         username = attrs.get('username','')
+        password = attrs.get('password','')
 
+        email_str = str(email).split('@')[0]
+
+        #extra validation before user gets saved
         if not username.isalnum():
             raise serializers.ValidationError('The username should contain only alphanumerics')
+
+        if username == password:
+            raise serializers.ValidationError("Username and password can't match")
+        if email_str == password:
+            raise serializers.ValidationError("Email and password are too close")
+
         return attrs
 
     def create(self, validated_data):
