@@ -3,7 +3,8 @@ import requests
 
 class Util:
     @staticmethod   
-    def get_price(coin):
+    def coin_price(obj):
+        coin = obj['coin']
         URL = 'https://api.coingecko.com/api/v3/simple/price'
         vs_currencies = 'usd'
 
@@ -19,7 +20,8 @@ class Util:
         return price
 
     @staticmethod
-    def get_last_updated(coin):
+    def coin_last_updated(obj):
+        coin = obj['coin']
         URL = 'https://api.coingecko.com/api/v3/simple/price'
         vs_currencies = 'usd'
 

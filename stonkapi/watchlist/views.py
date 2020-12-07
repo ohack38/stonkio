@@ -10,13 +10,17 @@ class AddCoinView(generics.CreateAPIView):
     serializer_class = AddCoinSerializer
     permissions = (permissions.IsAuthenticated,)
 
-    def perform_create(self, serializer):
-        return serializer.save(user=self.request.user)
-
-    # def post(self,request):
+   
+    def post(self,request):
         
-    #     serializer = self.serializer_class(data=request.data)
-    #     serializer.is_valid(raise_exception=True)
+        serializer = self.serializer_class(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save(user=self.request.user)
 
-    #     return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
 
+
+
+
+ # def perform_create(self, serializer):
+    #     return serializer.save(user=self.request.user)

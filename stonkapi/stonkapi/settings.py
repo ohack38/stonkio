@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     #INSTALLED
     'rest_framework',
     'drf_yasg',
+    'requests',
     #APPS
     'authentication',
     'watchlist',
