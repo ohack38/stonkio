@@ -2,8 +2,10 @@ from django.shortcuts import render
 from rest_framework import generics, status, permissions
 from rest_framework.response import Response  
 
-from .serializers import AddCoinSerializer
-from .utils import Util
+from .serializers import AddCoinSerializer, GetFeedSerializer, GetPrivateWatchlistSerializer, GetWatchlistSerializer
+from .models import Coin
+
+
 # Create your views here.
 class AddCoinView(generics.CreateAPIView):
 
@@ -21,6 +23,32 @@ class AddCoinView(generics.CreateAPIView):
 
 
 
+class GetFeedView(generics.ListAPIView):
+    serializer_class = GetFeedSerializer
+    queryset = Coin.objects.all()
 
- # def perform_create(self, serializer):
-    #     return serializer.save(user=self.request.user)
+    def get_queryset(self):
+        return self.queryset.filter(public=True)
+    #Response
+
+
+class GetWatchlistView(generics.ListAPIView):
+    serializer_class = GetWatchlistSerializer
+    permissions = (permissions.IsAuthenticated,)
+
+    def get_queryset(self):
+        return Coin.objects.filter(user=self.request.user)
+    
+    #specific user
+
+
+class GetPrivateWatchlistView(generics.ListAPIView):
+    serializer_class = GetPrivateWatchlistSerializer
+    permissions = (permissions.IsAuthenticated,)
+
+    def get_queryset(self):
+        return Coin.objects.filter(user=self.request.user)
+
+    #permissions+=isOwner??
+    #filter by user
+    #user==self.request.user??
