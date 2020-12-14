@@ -7,6 +7,10 @@ from .models import Coin
 
 
 # Create your views here.
+
+# FIX / add error handling to permisions
+
+
 class AddCoinView(generics.CreateAPIView):
 
     serializer_class = AddCoinSerializer
@@ -25,22 +29,26 @@ class AddCoinView(generics.CreateAPIView):
 
 class GetFeedView(generics.ListAPIView):
     serializer_class = GetFeedSerializer
-    queryset = Coin.objects.all()
 
     def get_queryset(self):
-        return self.queryset.filter(public=True)
-    #Response
+        return Coin.objects.filter(public=True)
+
+    '''
+    Feed view. All public posts
+    '''
 
 
 class GetWatchlistView(generics.ListAPIView):
     serializer_class = GetWatchlistSerializer
-    permissions = (permissions.IsAuthenticated,)
+    #permissions = (permissions.IsAuthenticated,) 
 
     def get_queryset(self):
-        return Coin.objects.filter(user=self.request.user)
+        user_id = self.kwargs.get('user_id', None)
+        return Coin.objects.filter(public=True, user=user_id)
     
-    #specific user
-
+    '''
+    Get specific user. only public posts
+    '''
 
 class GetPrivateWatchlistView(generics.ListAPIView):
     serializer_class = GetPrivateWatchlistSerializer
@@ -49,6 +57,9 @@ class GetPrivateWatchlistView(generics.ListAPIView):
     def get_queryset(self):
         return Coin.objects.filter(user=self.request.user)
 
-    #permissions+=isOwner??
-    #filter by user
-    #user==self.request.user??
+    '''
+    Personal posts. both public and private.
+    !! isOwner 
+
+    '''
+    
