@@ -11,7 +11,6 @@ class AddCoinSerializer(serializers.ModelSerializer):
         model = Coin
         fields = ['coin', 'public', 'group_id']
 
-    #def validate(self, attrs):
 
     def create(self, validated_data):
         return Coin.objects.create_coin(**validated_data)
@@ -19,7 +18,6 @@ class AddCoinSerializer(serializers.ModelSerializer):
 
 
 class GetFeedSerializer(serializers.ModelSerializer):
-    #Serializermethodfield for historical data
 
     class Meta:
         model = Coin
@@ -27,7 +25,6 @@ class GetFeedSerializer(serializers.ModelSerializer):
 
 
 class GetWatchlistSerializer(serializers.ModelSerializer):
-     #Serializermethodfield for historical data
 
     class Meta:
         model = Coin
@@ -36,7 +33,6 @@ class GetWatchlistSerializer(serializers.ModelSerializer):
 
 
 class GetPrivateWatchlistSerializer(serializers.ModelSerializer):
-     #Serializermethodfield for historical data
 
     class Meta:
         model = Coin
