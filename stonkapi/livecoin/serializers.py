@@ -5,20 +5,12 @@ from .models import LiveCoin
 
 class LiveCoinSerializer(serializers.ModelSerializer):
     
+    def create(self, validated_data):
+        return LiveCoin.objects.create_coin(**validated_data)
+
+    
     class Meta:
         model = LiveCoin
-        fields = '__all__'
+        fields = []
 
-    def create(self):
-        return LiveCoin.objects.create_coin()
-'''
-    def update(self, instance, validated_data):
-        """
-        Update and return an existing `Snippet` instance, given the validated data.
-        """
-        instance.current_price = validated_data.get('current_price', instance.current_price)
-        instance.market_cap = validated_data.get('market_cap', instance.market_cap)
-       
-        instance.save()
-        return instance
-        '''
+    

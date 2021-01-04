@@ -1,6 +1,9 @@
 from django.shortcuts import render
 from rest_framework import generics, status, permissions
+from rest_framework.response import Response  
+
 import requests
+
 from .models import LiveCoin
 from .serializers import LiveCoinSerializer
 
@@ -16,13 +19,13 @@ class LiveCoinView(generics.ListCreateAPIView):
     serializer_class = LiveCoinSerializer
     queryset = LiveCoin.objects.all()
 
-    def post(self, request):
+    def post(self,request):
         
-        serializer = self.serializer_class(data=data)
+        serializer = self.serializer_class(data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
 
-        return Response(serializer.data)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 
     '''
