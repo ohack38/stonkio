@@ -17,6 +17,7 @@ channels = "*"
 asgiref = "*"
 redis = "*"
 celery = "*"
+django-celery-beat = "*"
 
 [requires]
 python_version = "3.8"
