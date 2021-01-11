@@ -17,7 +17,7 @@ consider same architecture as watchlist!!
 '''
 class LiveCoinView(generics.ListCreateAPIView):
     serializer_class = LiveCoinSerializer
-    queryset = LiveCoin.objects.all()
+    queryset = LiveCoin.objects.all().order_by('rank')
 
     def post(self,request):
         
@@ -27,13 +27,8 @@ class LiveCoinView(generics.ListCreateAPIView):
 
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
+    
 
-    '''
-    def home_view(request):
-    url = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=USD&order=market_cap_desc&per_page=100&page=1&sparkline=false'
-    data = requests.get(url).json()
-    # return HttpResponse(data)
 
-    context = {'data': data}
-
-    '''
+    
+    

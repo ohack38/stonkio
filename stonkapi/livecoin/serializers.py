@@ -11,6 +11,7 @@ class LiveCoinSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = LiveCoin
-        fields = []
+        fields = '__all__'
+
 
     

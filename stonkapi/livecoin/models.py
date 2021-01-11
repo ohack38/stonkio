@@ -24,6 +24,10 @@ class LiveCoin(models.Model):
     current_price = models.CharField(max_length=255)
     market_cap = models.CharField(max_length=255)
     total_volume = models.CharField(max_length=255)
+    rank = models.CharField(max_length=255)
     image = models.URLField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     objects = LiveCoinManager()
+
