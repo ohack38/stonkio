@@ -2,9 +2,15 @@ from django.shortcuts import render
 from rest_framework import generics, status, permissions
 from rest_framework.response import Response  
 
-from .serializers import AddCoinSerializer
-from .utils import Util
+from .serializers import AddCoinSerializer, GetFeedSerializer, GetPrivateWatchlistSerializer, GetWatchlistSerializer
+from .models import Coin
+
+
 # Create your views here.
+
+# FIX / add error handling to permisions
+
+
 class AddCoinView(generics.CreateAPIView):
 
     serializer_class = AddCoinSerializer
@@ -12,7 +18,6 @@ class AddCoinView(generics.CreateAPIView):
 
    
     def post(self,request):
-        
         serializer = self.serializer_class(data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save(user=self.request.user)
@@ -21,6 +26,39 @@ class AddCoinView(generics.CreateAPIView):
 
 
 
+class GetFeedView(generics.ListAPIView):
+    serializer_class = GetFeedSerializer
 
- # def perform_create(self, serializer):
-    #     return serializer.save(user=self.request.user)
+    def get_queryset(self):
+        return Coin.objects.filter(public=True)
+
+    '''
+    Feed view. All public posts
+    '''
+
+
+class GetWatchlistView(generics.ListAPIView):
+    serializer_class = GetWatchlistSerializer
+    #permissions = (permissions.IsAuthenticated,) 
+
+    def get_queryset(self):
+        user_id = self.kwargs.get('user_id', None)
+        return Coin.objects.filter(public=True, user=user_id)
+    
+    '''
+    Get specific user. only public posts
+    '''
+
+class GetPrivateWatchlistView(generics.ListAPIView):
+    serializer_class = GetPrivateWatchlistSerializer
+    permissions = (permissions.IsAuthenticated,)
+
+    def get_queryset(self):
+        return Coin.objects.filter(user=self.request.user)
+
+    '''
+    Personal posts. both public and private.
+    !! isOwner 
+
+    '''
+    

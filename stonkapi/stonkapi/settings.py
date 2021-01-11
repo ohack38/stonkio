@@ -42,11 +42,16 @@ INSTALLED_APPS = [
     'rest_framework',
     'drf_yasg',
     'requests',
+    'django_celery_beat',
     #APPS
     'authentication',
     'watchlist',
+    'livecoin',
     
 ]
+
+CELERY_BROKER_URL = 'amqp://localhost'
+CELERY_TIMEZONE = 'Europe/Helsinki'
 
 SWAGGER_SETTINGS = {
     'SECURITY_DEFINITIONS': {

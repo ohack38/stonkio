@@ -28,7 +28,7 @@ class CoinManager(models.Manager):
 #Add coin
 #If public=True, it will be visible on the feed
 #if group_id=valid_group_id, it will be visible for specific groups members
-class AddCoin(models.Model):
+class Coin(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     coin = models.CharField(max_length=255)
     price = models.DecimalField(max_digits=9,decimal_places=2)

@@ -11,6 +11,13 @@ djangorestframework = "*"
 djangorestframework-simplejwt = "*"
 python-dotenv = "*"
 python-decouple = "*"
+psycopg2 = "*"
+requests = "*"
+channels = "*"
+asgiref = "*"
+redis = "*"
+celery = "*"
+django-celery-beat = "*"
 
 [requires]
 python_version = "3.8"
