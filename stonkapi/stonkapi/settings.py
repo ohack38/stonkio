@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     #INSTALLED
     'rest_framework',
+    'rest_framework_simplejwt.token_blacklist',
     'drf_yasg',
     'requests',
     'django_celery_beat',
