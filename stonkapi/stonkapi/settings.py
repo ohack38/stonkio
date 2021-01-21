@@ -44,12 +44,19 @@ INSTALLED_APPS = [
     'drf_yasg',
     'requests',
     'django_celery_beat',
+    'corsheaders'
     #APPS
     'authentication',
     'watchlist',
     'livecoin',
     
 ]
+
+CORS_ORIGIN_WHITELIST = [
+    'localhost:3000/'
+]
+     
+ 
 
 CELERY_BROKER_URL = 'amqp://localhost'
 CELERY_TIMEZONE = 'Europe/Helsinki'
