@@ -1,4 +1,7 @@
 import React from 'react';
+import {
+    NavLink,
+  } from "react-router-dom";
 import { Column } from 'simple-flexbox';
 import LogoComponent from './LogoComponent';
 import MenuItemComponent from './MenuItemComponent';
@@ -7,26 +10,35 @@ import WatchlistIcon from '../../assets/watchlistIcon.js';
 import PriceIcon from '../../assets/ticketsIcon.js';
 import FeedIcon from '../../assets/feedIcon.js';
 
-const SidebarComponent = (props) => {
+const SidebarComponent = () => {
     return(
         <Column className='sb-container'>
             <LogoComponent />
             <Column className='menuItemList'>
-                <MenuItemComponent 
-                    title="Wathlist" icon={WatchlistIcon}
-                    onClick={() => props.onChange('Watchlist')}
-                    active={props.active === 'Watchlist'}
-                />
-                <MenuItemComponent 
-                    title="Prices" icon={PriceIcon}
-                    onClick={() => props.onChange('Prices')}
-                    active={props.active === 'Prices'}
-                />
-                <MenuItemComponent 
-                    title="Feed" icon={FeedIcon}
-                    onClick={() => props.onChange('Feed')}
-                    active={props.active === 'Feed'}
-                />
+                <NavLink 
+                    className='menuContainer'
+                    activeClassName='activeContainer'
+                    to='/watchlist'
+                >
+                    <MenuItemComponent title="Wathlist" icon={WatchlistIcon} />
+                </NavLink>
+                
+                <NavLink 
+                    className='menuContainer'
+                    activeClassName='activeContainer'
+                    to='/prices'
+                >
+                    <MenuItemComponent title="Prices" icon={PriceIcon} />
+                </NavLink>
+                
+                <NavLink 
+                    className='menuContainer'
+                    activeClassName='activeContainer'
+                    to='/feed'
+                >
+                    <MenuItemComponent title="Feed" icon={FeedIcon} />
+                </NavLink>
+                
             </Column>
         </Column>
     )

@@ -8,8 +8,7 @@ const MenuItemComponent = (props) => {
     const Icon = icon 
 
     return(
-        <Row className={ active ? 'activeContainer' : 'menuContainer'} vertical='center'>
-            
+        <Row vertical="center">
             <Icon fill={active && "#DDE2FF"} opacity={!active && "0.4"} />
             <span className={ active ? 'activeTitle' : 'menuTitle' }>{title}</span>
         </Row>
