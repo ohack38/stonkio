@@ -39,10 +39,10 @@ schema_view = get_schema_view(
 # DOCS>
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('auth/', include('authentication.urls')),
-    path('watchlist/', include('watchlist.urls')),
-    path('live/', include('livecoin.urls')),
+    path('api/admin/', admin.site.urls),
+    path('api/auth/', include('authentication.urls')),
+    path('api/watchlist/', include('watchlist.urls')),
+    path('api/live/', include('livecoin.urls')),
 
     #DOCS
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
