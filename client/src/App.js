@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
@@ -15,27 +15,34 @@ import FeedComponent from './components/Feed/FeedComponent'
 
 
 function App() {
-
+  const [isMobile, setMobile] = useState(false);
+  useEffect(() => {
+      if(window.innerWidth < 768){
+        setMobile(true);
+      }
+  },[])
 
   return (
     <Router>
       <Row className='appContainer'>
-        <SidebarComponent />
+        <SidebarComponent mobile={isMobile}/>
         <Column >
           <Header />
+          <div className='mainContainer'>
+            <Switch>
+              <Route path='/watchlist'>
+                <WatchlistComponent />
+              </Route>
+              <Route path='/prices'>
+                <PriceComponent />
+              </Route>
+              <Route path='/feed'>
+                <FeedComponent />
+              </Route>
+            </Switch>
+          </div>
 
 
-          <Switch>
-            <Route path='/watchlist'>
-              <WatchlistComponent />
-            </Route>
-            <Route path='/prices'>
-              <PriceComponent />
-            </Route>
-            <Route path='/feed'>
-              <FeedComponent />
-            </Route>
-          </Switch>
 
 
         </Column>

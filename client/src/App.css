@@ -12,7 +12,21 @@
     transform: rotate(360deg);
   }
 }
-
+.appContainer{
+  width: 100%;
+  
+}
+.mainContainer{
+  padding: 56px;
+  font-family: Muli;
+  font-size: 16;
+  line-height: 20px;
+  letter-spacing: 0.2px;
+  color: #252733 ;
+}
+.headerContainer{
+  justify-content:flex-end;
+}
 /* side bar stuff */
 .logoContainer {
   padding-left: 36px;
@@ -58,6 +72,8 @@
   background-color: #363740;
   width: 255px;
   padding-top: 32px;
+  height: 100vh;
+  position: relative;
 }
 .menuItemList {
   margin-top: 52px;
@@ -67,4 +83,10 @@
   margin-top: 16px;
   margin-bottom: 16px;
   opacity: 0.06;
+}
+.collapsed {
+  display: none;
+}
+.priceTitles {
+  justify-content: flex-start;
 }
