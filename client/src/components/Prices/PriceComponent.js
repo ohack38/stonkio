@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import PriceItem from './PriceItem'
 import Spinner from '../../assets/Spinner';
+import { Column } from 'simple-flexbox';
 
 const PriceComponent = () => {
     const[prices, setPrices] = useState([]);
@@ -20,14 +21,14 @@ const PriceComponent = () => {
 
     //map prices, for item <PriceItem />
     return (
-        <div>
+        <Column className='priceContainer'>
             { prices !== null && !loading ? 
-            prices.map(coin => (
-                <PriceItem key={coin.id} coin={coin} />
+                prices.map(coin => (
+                    <PriceItem key={coin.id} coin={coin} />
             )) : 
             <Spinner />}
             
-        </div>
+        </Column>
     );
 }
 
