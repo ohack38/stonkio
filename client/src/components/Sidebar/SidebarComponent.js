@@ -18,7 +18,7 @@ const SidebarComponent = ({ mobile }) => {
     const toggleSidebar = () => {setExpanded(!expanded);}
 
     return(
-        <div style={{ position: 'relative' }}>
+        <div className='relative'>
             <Row>
                 <div className={expanded ? '' : 'collapsed'}>
                     <Column className='sb-container' >

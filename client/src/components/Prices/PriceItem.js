@@ -17,11 +17,11 @@ const PriceItem = ({ coin }) => {
         // </Row>
         
             <tr>
-                <td style={{paddingRight: '10px'}}>{coin.rank}</td>
+                <td >{coin.rank}</td>
                 <td><img src={coin.image} height='35' alt='LOGO'/></td>
-                <td>{coin.name}</td>
-                <td>{coin.current_price}</td>
-                <td>{coin.market_cap}</td>
+                <td>{coin.name} </td>
+                <td>${coin.current_price}</td>
+                <td>${coin.market_cap}</td>
             </tr>
             
        

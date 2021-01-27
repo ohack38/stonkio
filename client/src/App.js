@@ -24,29 +24,32 @@ function App() {
 
   return (
     <Router>
-      <Row className='appContainer'>
-        <SidebarComponent mobile={isMobile}/>
-        <Column >
-          <Header />
-          <div className='mainContainer'>
-            <Switch>
-              <Route path='/watchlist'>
-                <WatchlistComponent />
-              </Route>
-              <Route path='/prices'>
-                <PriceComponent />
-              </Route>
-              <Route path='/feed'>
-                <FeedComponent />
-              </Route>
-            </Switch>
-          </div>
+      <div className='fullWidth'>
+        <Row >
+          <SidebarComponent mobile={isMobile}/>
+          <Column >
+            <Header />
+            <div className='mainContainer'>
+              <Switch>
+                <Route path='/watchlist'>
+                  <WatchlistComponent />
+                </Route>
+                <Route path='/prices'>
+                  <PriceComponent />
+                </Route>
+                <Route path='/feed'>
+                  <FeedComponent />
+                </Route>
+              </Switch>
+            </div>
 
 
 
 
-        </Column>
-      </Row>
+          </Column>
+        </Row>
+      </div>
+      
     </Router>
     
     

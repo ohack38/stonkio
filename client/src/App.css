@@ -12,8 +12,9 @@
     transform: rotate(360deg);
   }
 }
-.appContainer{
-  width: 100%;
+.fullWidth{
+  /*width: 100vw;*/
+  
   
 }
 .mainContainer{
@@ -23,6 +24,7 @@
   line-height: 20px;
   letter-spacing: 0.2px;
   color: #252733 ;
+
 }
 .headerContainer{
   justify-content:flex-end;
@@ -89,4 +91,14 @@
 }
 .priceTitles {
   justify-content: flex-start;
+}
+.centered {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  /* bring your own prefixes */
+  transform: translate(-50%, -50%);
+}
+.relative{
+  position:relative;
 }
