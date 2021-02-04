@@ -54,7 +54,7 @@ class GetPrivateWatchlistView(generics.ListAPIView):
     permissions = (permissions.IsAuthenticated,)
 
     def get_queryset(self):
-        return Coin.objects.filter(user=self.request.user)
+        return Coin.objects.filter(user=self.request.user.id)
 
     '''
     Personal posts. both public and private.

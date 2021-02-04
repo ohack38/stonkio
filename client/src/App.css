@@ -12,7 +12,18 @@
     transform: rotate(360deg);
   }
 }
+.mainContainer{
+  padding: 56px;
+  font-family: Muli;
+  font-size: 16;
+  line-height: 20px;
+  letter-spacing: 0.2px;
+  color: #252733 ;
 
+}
+.headerContainer{
+  justify-content:flex-end;
+}
 /* side bar stuff */
 .logoContainer {
   padding-left: 36px;
@@ -58,6 +69,8 @@
   background-color: #363740;
   width: 255px;
   padding-top: 32px;
+  height: 100vh;
+  position: relative;
 }
 .menuItemList {
   margin-top: 52px;
@@ -67,4 +80,35 @@
   margin-top: 16px;
   margin-bottom: 16px;
   opacity: 0.06;
+}
+.collapsed {
+  display: none;
+}
+.priceTitles {
+  justify-content: flex-start;
+}
+.centered {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  /* bring your own prefixes */
+  transform: translate(-50%, -50%);
+}
+.relative{
+  position:relative;
+}
+.images{
+  height:70px;
+}
+.alert-success{
+  padding:10px;
+  background-color:#5cb85c;
+  border:1px solid #216d21;
+  border-radius:5px;
+}
+.alert-danger{
+  padding:10px;
+  background-color:#d9534f;
+  border:1px solid #a3231f;
+  border-radius:5px;
 }

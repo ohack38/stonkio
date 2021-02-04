@@ -1,19 +1,27 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import { Row } from 'simple-flexbox';
+import API from '../../services/API';
+import { getCurrentUser } from '../../services/authService';
 
 
-const Header = (props) => {
-    //logged prop for dynamic header options
-    const { title, isLoggedIn } = props;
+const Header = () => {
+    const history = useHistory();
+    const user = getCurrentUser();
+    const refresh = localStorage.getItem('refresh');
+    const handleLogout = () => {
+        API.logout({ refresh });
+        history.push('/');
+
+    }
     return (
-        <Row className='headerConteiner' vertical='center' horizontal='space-between'>
-            <span className='headerTitle'>{title}</span>
-            <Row vertical='center'>
+        <Row className='headerContainer' >
+            <Row >
                 {
-                    isLoggedIn 
+                    user 
                         ? (
                             <div className='auth'>
-                                <button>Logout</button>
+                                <button onClick={handleLogout}>Logout</button>
                             </div>
                             )
                         : ( 
