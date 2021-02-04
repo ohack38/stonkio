@@ -36,7 +36,7 @@ const SidebarComponent = ({ mobile }) => {
                             <NavLink 
                                 className='menuContainer'
                                 activeClassName='activeContainer'
-                                to='/watchlist'
+                                to='/' exact
                             >
                                 <MenuItemComponent title="Wathlist" icon={WatchlistIcon} />
                             </NavLink>

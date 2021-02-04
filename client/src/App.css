@@ -12,11 +12,6 @@
     transform: rotate(360deg);
   }
 }
-.fullWidth{
-  /*width: 100vw;*/
-  
-  
-}
 .mainContainer{
   padding: 56px;
   font-family: Muli;
@@ -101,4 +96,19 @@
 }
 .relative{
   position:relative;
+}
+.images{
+  height:70px;
+}
+.alert-success{
+  padding:10px;
+  background-color:#5cb85c;
+  border:1px solid #216d21;
+  border-radius:5px;
+}
+.alert-danger{
+  padding:10px;
+  background-color:#d9534f;
+  border:1px solid #a3231f;
+  border-radius:5px;
 }
